@@ -1,28 +1,29 @@
 <template>
   <div class="rhymesaurus">
-    <form><!-- TODO: Use a submit event handler to allow the findWords method to handle this form submission. -->
+    <form v-on:submit.prevent="findWords"><!-- TODO: Use a submit event handler to allow the findWords method to handle this form submission. -->
       <p>Find rhymes for <input type="text" v-model="rhyme"> related to <input type="text" v-model="phrase"> <button type="submit">Search</button></p>
     </form>
     <!-- TODO: Add a v-if conditional to make this results list show only if there are results and if the length is greater than 0. -->
-    <ul class="results">
+    <ul class="results" v-if:="results && results.length > 0">
       <!-- TODO: Add a v-for loop to the LI tag to loop through the items in the results. -->
-      <li class="item">
-        <p><strong><!-- TODO: Output word --></strong></p>
-        <p><!-- TODO: Output score --></p>
+      <li class="item" v-for="(item,index) of results" :key="index">
+        <p><strong><!-- TODO: Output word -->{{item.word}}</strong></p>
+        <p><!-- TODO: Output score -->{{item.score}}</p>
       </li>
     </ul>
 
     <!-- TODO: Add a `v-else-if` conditional to make this message only show if there are no results returned (but we have actually attempted a request). -->
-    <div class="no-results">
+    <div class="no-results" v-else-if:= "results && results.length === 0">
       <h2>No Words Found</h2>
       <p>Please adjust your search to find more words.</p>
     </div>
 
     <!-- TODO: Add a v-if conditional to make this errors list show only if there are errors and if the length is greater than 0. -->
-    <ul class="errors">
+    <ul class="errors" v-if="errors && errors.length > 0">
       <!-- TODO: Add a v-for loop to the LI tag to loop through the errors. -->
-      <li>
+      <li v-for="(errors, index) of errors" :key="index">
         <!-- TODO: Output each error. -->
+        {{error.message}}
       </li>
     </ul>
   </div>
@@ -30,6 +31,7 @@
 
 <script>
 // TODO: Import axios properly here.
+import axios from 'axios'
 
 export default {
   name: 'Rhymesaurus',
@@ -41,6 +43,28 @@ export default {
       rhyme: ''
     }
   }
+  methods:{
+    findWords: function() {
+      axios.get('https://api.datamuse.com/words ,{
+        params: {
+          ml: this.phrase,
+          rel_rhy: this.rhyme
+        }
+      })
+        .then(response => {
+          this.results=response.data;
+        })
+        .catch(error => {
+          this.errors.push(error);
+        });
+    }
+  },
+  get methods() {
+    return this._methods;
+  },
+  set methods(value) {
+    this._methods=value;
+  },
     // TODO: Create the findWords method.
 
     // TODO: Complete the following inside of the findWords method.

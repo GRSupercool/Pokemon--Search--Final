@@ -19,7 +19,7 @@
     </div>
 
     <!-- TODO: Add a v-if conditional to make this errors list show only if there are errors and if the length is greater than 0. -->
-    <ul class="errors" v-if="errors && errors.length > 0">
+    <ul class="errors" v-if="error && errors.length > 0">
       <!-- TODO: Add a v-for loop to the LI tag to loop through the errors. -->
       <li v-for="(errors, index) of errors" :key="index">
         <!-- TODO: Output each error. -->
@@ -42,8 +42,8 @@ export default {
       phrase: '',
       rhyme: ''
     }
-  }
-  
+  },
+
   methods: {
     findWords: function() {
       axios.get('https://api.datamuse.com/words',{

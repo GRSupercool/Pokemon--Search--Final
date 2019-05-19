@@ -43,9 +43,10 @@ export default {
       rhyme: ''
     }
   }
-  methods:{
+  
+  methods: {
     findWords: function() {
-      axios.get('https://api.datamuse.com/words ,{
+      axios.get('https://api.datamuse.com/words',{
         params: {
           ml: this.phrase,
           rel_rhy: this.rhyme
@@ -59,6 +60,12 @@ export default {
         });
     }
   },
+   get methods() {
+     return this._methods_1;
+   },
+   set methods(value) {
+     this._methods_1=value;
+   },
   get methods() {
     return this._methods;
   },

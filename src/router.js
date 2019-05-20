@@ -6,16 +6,15 @@ import AdjForNoun from '@/views/AdjfornNoun'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
-      name: 'Rhymesaurus',
+      name: 'rhymesaurus',
       component: Rhymesaurus
     },
     {
       path: '/adjfornoun',
       name: 'adjfornoun',
-      component: AdjForNoun 
+      component: AdjForNoun
     }
     // TODO: Add new route definition here.
   ]

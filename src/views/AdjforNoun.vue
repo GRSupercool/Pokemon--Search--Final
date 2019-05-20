@@ -1,17 +1,16 @@
 <template>
   <div class="adjfornoun">
-      <h2>Adjective for Noun</h2>
-      <p>
-          <rounter-link to="/">Home: Rhymesarurus</rounter-link>
-      </p>
+    <h2>Adjective for Noun</h2>
+    <p>
+      <rounter-link to="/">Home: Rhymesarurus</rounter-link>
+    </p>
     <form v-on:submit.prevent="findWords">
       <!-- TODO: Use a submit event handler to allow the findWords method to handle this form submission. -->
       <p>
         Find an Adjective for a given Noun
-        <input type="text" v-model="noun"> 
+        <input type="text" v-model="noun">
         <button type="submit">Search</button>
       </p>
-
     </form>
     <!-- TODO: Add a v-if conditional to make this results list show only if there are results and if the length is greater than 0. -->
     <ul class="results" v-if="results && results.length > 0">
@@ -79,17 +78,17 @@ export default {
   }
 };
 
-  // TODO: Create the findWords method.
+// TODO: Create the findWords method.
 
-  // TODO: Complete the following inside of the findWords method.
-  // TODO: Create an axios.get statement that requests from https://api.datamuse.com/words
-  // TODO: Create the params object
-  // TODO: Set the `ml` parameter equal to `this.phrase`
-  // TODO: Set the `rel_ehy` parameter equal to `this.rhyme`
-  // TODO: Create a `then` clause
-  // TODO: Inside the `then` clause, set `this.results` equal to `response.data`
-  // TODO: Create a `catch` clause
-  // TODO: Inside the `catch` clause, push the new `error` onto the `this.errors` array
+// TODO: Complete the following inside of the findWords method.
+// TODO: Create an axios.get statement that requests from https://api.datamuse.com/words
+// TODO: Create the params object
+// TODO: Set the `ml` parameter equal to `this.phrase`
+// TODO: Set the `rel_ehy` parameter equal to `this.rhyme`
+// TODO: Create a `then` clause
+// TODO: Inside the `then` clause, set `this.results` equal to `response.data`
+// TODO: Create a `catch` clause
+// TODO: Inside the `catch` clause, push the new `error` onto the `this.errors` array
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -1,16 +1,20 @@
 <template>
   <div class="adjfornoun">
+      <h2>Adjective for Noun</h2>
+      <p>
+          <rounter-link to="/">Home: Rhymesarurus</rounter-link>
+      </p>
     <form v-on:submit.prevent="findWords">
       <!-- TODO: Use a submit event handler to allow the findWords method to handle this form submission. -->
       <p>
         Find an Adjective for a given Noun
-        <input type="text" v-model="rhyme"> related to
-        <input type="text" v-model="phrase">
+        <input type="text" v-model="noun"> 
         <button type="submit">Search</button>
       </p>
+
     </form>
     <!-- TODO: Add a v-if conditional to make this results list show only if there are results and if the length is greater than 0. -->
-    <ul class="results" v-if:="results && results.length > 0">
+    <ul class="results" v-if="results && results.length > 0">
       <!-- TODO: Add a v-for loop to the LI tag to loop through the items in the results. -->
       <li class="item" v-for="(item,index) of results" :key="index">
         <p>
@@ -27,15 +31,15 @@
     </ul>
 
     <!-- TODO: Add a `v-else-if` conditional to make this message only show if there are no results returned (but we have actually attempted a request). -->
-    <div class="no-results" v-else-if:="results && results.length === 0">
+    <div class="no-results" v-else-if="results && results.length === 0">
       <h2>No Words Found</h2>
       <p>Please adjust your search to find more words.</p>
     </div>
 
     <!-- TODO: Add a v-if conditional to make this errors list show only if there are errors and if the length is greater than 0. -->
-    <ul class="errors" v-if="error && errors.length > 0">
+    <ul class="errors" v-if="errors && errors.length > 0">
       <!-- TODO: Add a v-for loop to the LI tag to loop through the errors. -->
-      <li v-for="(errors, index) of errors" :key="index">
+      <li v-for="(error, index) of errors" :key="index">
         <!-- TODO: Output each error. -->
         {{error.message}}
       </li>
@@ -53,8 +57,7 @@ export default {
     return {
       results: null,
       errors: [],
-      phrase: "",
-      rhyme: ""
+      noun: ""
     };
   },
 
@@ -63,8 +66,7 @@ export default {
       axios
         .get("https://api.datamuse.com/words", {
           params: {
-            ml: this.phrase,
-            rel_rhy: this.rhyme
+            rel_jjb: this.noun
           }
         })
         .then(response => {
@@ -75,6 +77,7 @@ export default {
         });
     }
   }
+};
 
   // TODO: Create the findWords method.
 
@@ -87,7 +90,6 @@ export default {
   // TODO: Inside the `then` clause, set `this.results` equal to `response.data`
   // TODO: Create a `catch` clause
   // TODO: Inside the `catch` clause, push the new `error` onto the `this.errors` array
-};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

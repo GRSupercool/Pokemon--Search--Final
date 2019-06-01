@@ -29,6 +29,7 @@
     <ul class="errors" v-if="errors && errors.length > 0">
       <li v-for="(errors, index) of errors" :key="index">{{error.message}}</li>
     </ul>
+    {{results}}
   </div>
 </template>
 
@@ -49,11 +50,7 @@ export default {
   methods: {
     findWords: function() {
       axios
-        .get("https://api.datamuse.com/words", {
-          params: {
-            ml: this.phrase,
-            rel_rhy: this.rhyme
-          }
+        .get("https://pokeapi.co/api/v2/",{
         })
         .then(response => {
           this.results = response.data;
@@ -63,7 +60,7 @@ export default {
         });
     }
   }
-};
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

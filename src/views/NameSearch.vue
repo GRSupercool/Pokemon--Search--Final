@@ -14,9 +14,9 @@
     <ul class="results" v-if="results && results.length > 0">
       <li class="item" v-for="(item,index) of results" :key="index">
         <p>
-          <strong>{{item.word}}</strong>
+          <strong>{{item.name}}</strong>
         </p>
-        <p>{{item.score}}</p>
+        <p>{{item.url}}</p>
       </li>
     </ul>
 
@@ -52,7 +52,7 @@ export default {
         .get("https://pokeapi.co/api/v2/pokemon/",{
         })
         .then(response => {
-          this.results = response.data;
+          this.results = response.data.results;
         })
         .catch(error => {
           this.errors.push(error);

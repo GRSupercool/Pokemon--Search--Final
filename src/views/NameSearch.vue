@@ -50,7 +50,7 @@ export default {
   methods: {
     findWords: function() {
       axios
-        .get("https://pokeapi.co/api/v2/",{
+        .get("https://pokeapi.co/api/v2/pokemon/",{
         })
         .then(response => {
           this.results = response.data;

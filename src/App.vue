@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>Pokemon: Search for Pokemon</h1>
+    <h1>Pokemon</h1>
     <router-view/>
   </div>
 </template>

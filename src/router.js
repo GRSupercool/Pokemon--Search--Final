@@ -1,19 +1,19 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Rhymesaurus from '@/views/Rhymesaurus'
-import AdjForNoun from '@/views/AdjforNoun'
+import NameSearch from '@/views/NameSearch'
+import TypeSearch from '@/views/TypeSearch'
 Vue.use(Router)
 
 export default new Router({
   routes: [{
       path: '/',
-      name: 'rhymesaurus',
-      component: Rhymesaurus
+      name: 'namesearch',
+      component: NameSearch
     },
     {
-      path: '/adjfornoun',
-      name: 'adjfornoun',
-      component: AdjForNoun
+      path: '/typesearch',
+      name: 'typesearch',
+      component:TypeSearch
     }
 
   ]

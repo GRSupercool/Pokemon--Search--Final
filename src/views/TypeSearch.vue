@@ -1,12 +1,12 @@
 <template>
-  <div class="adjfornoun">
-    <h2>Adjective for Noun</h2>
+  <div class="typesearch">
+    <h2>Select Pokemon by Type</h2>
     <p>
-      <router-link to="/">Home: Rhymesaurus</router-link>
+      <router-link to="/">Home: NameSearch</router-link>
     </p>
     <form v-on:submit.prevent="findWords">
       <p>
-        Find an Adjective for a given Noun
+        Find a Pokemon By Type
         <input type="text" v-model="noun">
         <button type="submit">Search</button>
       </p>
@@ -21,8 +21,8 @@
     </ul>
 
     <div class="no-results" v-else-if="results && results.length === 0">
-      <h2>No Words Found</h2>
-      <p>Please adjust your search to find more words.</p>
+      <h2>No Pokemon Found</h2>
+      <p>Please adjust your search to find a Pokemon.</p>
     </div>
 
     <ul class="errors" v-if="errors && errors.length > 0">
@@ -35,7 +35,7 @@
 import axios from "axios";
 
 export default {
-  name: "AdjforNoun",
+  name: "TypeSearch",
   data() {
     return {
       results: null,
@@ -47,7 +47,7 @@ export default {
   methods: {
     findWords: function() {
       axios
-        .get("https://api.datamuse.com/words", {
+        .get("https://pokeapi.co/", {
           params: {
             rel_jjb: this.noun
           }
@@ -65,7 +65,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.adjfornoun {
+.TypeSearch {
   font-size: 1.4rem;
 }
 

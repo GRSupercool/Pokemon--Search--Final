@@ -1,8 +1,8 @@
 <template>
-  <div class="rhymesaurus">
-    <h2>Rhymesaurus: The Rhyming Thesaurus</h2>
+  <div class="NameSearch">
+    <h2>Search for Pokemon By Name</h2>
     <p>
-      <router-link to="/adjfornoun">Adjective for Noun</router-link>
+      <router-link to="/typesearch">Search for Pokemon by Type</router-link>
     </p>
     <form v-on:submit.prevent="findWords">
       <p>
@@ -37,7 +37,7 @@
 import axios from "axios";
 
 export default {
-  name: "Rhymesaurus",
+  name: "Namesearch",
   data() {
     return {
       results: null,
@@ -65,7 +65,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.rhymesaurus {
+.Namesearch {
   font-size: 1.4rem;
 }
 

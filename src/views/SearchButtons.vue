@@ -3,7 +3,7 @@
     <h1>{{ PokemonFinder}}</h1>
 <div>
   <b-button>Search by Pokemon Name</b-button>
-  <b-button >Search by Pokemon Type</b-button>
+  <b-button>Search by Pokemon Type</b-button>
   <p>
       <router-link to="/typesearch">Search for Pokemon by Type</router-link>
       <router-link to="/namesearch">Search for Pokemon By Name<router-link>

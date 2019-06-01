@@ -7,7 +7,7 @@
     <form v-on:submit.prevent="findWords">
       <p>
         Find Pokemon 
-        <input type="text" v-model="rhyme"> 
+        <input type="text" v-model="name"> 
         <button type="submit">Search</button>
       </p>
     </form>
@@ -22,13 +22,13 @@
 
     <div class="no-results" v-else-if="results && results.length== 0">
       <h2>No Words Found</h2>
-      <p>Please adjust your search to find more words.</p>
+      <p>Please adjust your search to find your pokemon.</p>
     </div>
 
     <ul class="errors" v-if="errors && errors.length > 0">
       <li v-for="(errors, index) of errors" :key="index">{{error.message}}</li>
     </ul>
-    {{results}}
+
   </div>
 </template>
 
@@ -42,7 +42,8 @@ export default {
       results: null,
       errors: [],
       phrase: "",
-      rhyme: ""
+      name: ""
+
     };
   },
 

@@ -6,9 +6,8 @@
     </p>
     <form v-on:submit.prevent="findWords">
       <p>
-        Find rhymes for
-        <input type="text" v-model="rhyme"> related to
-        <input type="text" v-model="phrase">
+        Find Pokemon 
+        <input type="text" v-model="rhyme"> 
         <button type="submit">Search</button>
       </p>
     </form>

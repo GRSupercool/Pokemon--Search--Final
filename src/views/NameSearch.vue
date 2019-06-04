@@ -4,29 +4,35 @@
     <p>
       <router-link to="/typesearch">Search for Pokemon by Type</router-link>
     </p>
-    <form v-on:submit.prevent="findWords">
+    <form v-on:submit.prevent="getPokemon">
       <p>
         Find Pokemon 
-        <input type="text" v-model="name"> 
+        <input type="text" v-model="pokemonName" placeholder="Meowth"> 
         <button type="submit">Search</button>
       </p>
     </form>
-    <ul class="results" v-if="results && results.length > 0">
-      <li class="item" v-for="(item,index) of results" :key="index">
+    <ul class="results" v-if="results && Object.keys(results).length > 0">
+      <li class="item">
+        <p>
+          <strong>{{this.results.name}}</strong>
+        </p>
+        <img :src="`${this.results.sprites.front_default}`" />
+      </li>
+      <!-- <li class="item" v-for="(item,index) of results" :key="index">
         <p>
           <strong>{{item.name}}</strong>
         </p>
-        <p>{{item.url}}</p>
-      </li>
+        <img :src="`${item.sprites.front_default}`" />
+      </li> -->
     </ul>
 
-    <div class="no-results" v-else-if="results && results.length== 0">
-      <h2>No Words Found</h2>
-      <p>Please adjust your search to find your pokemon.</p>
+
+    <div class="no-results" v-else-if="results && Object.keys(results).length === 0">
+      <h2>Enter valid Pokemon name</h2>
     </div>
 
     <ul class="errors" v-if="errors && errors.length > 0">
-      <li v-for="(errors, index) of errors" :key="index">{{error.message}}</li>
+      <li v-for="(errors, index) of errors" :key="index">Pokemon not found</li>
     </ul>
 
   </div>
@@ -48,12 +54,14 @@ export default {
   },
 
   methods: {
-    findWords: function() {
+    getPokemon: function() {
       axios
-        .get("https://pokeapi.co/api/v2/pokemon/",{
+        .get(`https://pokeapi.co/api/v2/pokemon/${this.pokemonName}`,{
         })
         .then(response => {
-          this.results = response.data.results;
+          this.results = response.data;
+          console.log(this.results.name);
+          console.log(this.results.sprites.front_default);
         })
         .catch(error => {
           this.errors.push(error);

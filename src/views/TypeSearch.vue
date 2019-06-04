@@ -1,20 +1,17 @@
 <template>
   <div class="typesearch">
     <h2>Select Pokemon by Type</h2>
-    <p>
-      <router-link to="/">Home: NameSearch</router-link>
-    </p>
     <form v-on:submit.prevent="findWords">
       <p>
         Find a Pokemon By Type
-        <input type="text" v-model="noun">
+        <input type="text" v-model="name">
         <button type="submit">Search</button>
       </p>
     </form>
     <ul class="results" v-if="results && results.length > 0">
       <li class="item" v-for="(item,index) of results" :key="index">
         <p>
-          <strong>{{item.word}}</strong>
+          <strong>{{item.name}}</strong>
         </p>
         <p>{{item.score}}</p>
       </li>

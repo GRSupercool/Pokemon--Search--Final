@@ -1,22 +1,18 @@
 <template>
   <div class="hello">
     <h1>{{ PokemonFinder}}</h1>
-<div>
-  <b-button>Search by Pokemon Name</b-button>
-  <b-button>Search by Pokemon Type</b-button>
-  <p>
-      <router-link to="/typesearch">Search for Pokemon by Type</router-link>
-      <router-link to="/namesearch">Search for Pokemon By Name<router-link>
-    </p>
-</div>
+    hello {{$route.params.typeSearch}}
 
+</div>
 </template>
 
 <script>
 export default {
   name: 'SearchButtons',
-  props: {
-    msg: String
+  data() {
+    return {
+      msg: 'searchbuttons'
+    }
   }
 }
 </script>

@@ -62,7 +62,7 @@ export default {
           this.results = response.data;
           console.log(this.results.name);
           console.log(this.results.sprites.front_default);
-          console.log(this.results.data)
+          console.log(this.results.type)
         })
         .catch(error => {
           this.errors.push(error);

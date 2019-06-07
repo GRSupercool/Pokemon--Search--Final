@@ -47,8 +47,6 @@ export default {
   align-items:center;
   }
   
-
-
   *,::before, ::after{
     box-sizing:border-box;
     overflow:hidden;

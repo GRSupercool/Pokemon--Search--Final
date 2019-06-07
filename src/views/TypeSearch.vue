@@ -46,22 +46,6 @@
       v-model="pokemon"
       name="pokemon"
     >
-      <option>Bulbasaur</option>
-      <option>Charizard</option>
-      <option>Pikachu</option>
-      <option>Meowth</option>
-      <option>Catipillar</option>
-      <option>JigglyPuff</option>
-      <option>IvySaur</option>
-      <option>Venasaur</option>  
-      <option>Metapod</option>
-      <option>Butterfree</option>
-      <option>Blastoise</option>
-      <option>Charmander</option>
-      <option>Weedle</option>
-      <option>Squirtle</option>
-      <option>Wartortle</option>
-      <option>Beedrill</option>
       <option>ViewAll</option>
     </select>
   </p>

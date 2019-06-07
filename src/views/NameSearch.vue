@@ -8,7 +8,7 @@
     <form v-on:submit.prevent="getPokemon">
       <p>
         Enter Pokemon Name
-        <input type="text" v-model="pokemonName" placeholder="Meowth"> 
+        <input type="text" v-model="pokemonName" placeholder="meowth"> 
         <button type="submit">Search</button>
       </p>
     </form>

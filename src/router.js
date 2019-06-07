@@ -3,7 +3,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import NameSearch from '@/views/NameSearch'
 import TypeSearch from '@/views/TypeSearch'
-import SearchButtons from '@/views/SearchButtons'
 
 Vue.use(Router)
 
@@ -14,15 +13,15 @@ export default new Router({
       component:NameSearch
     },
     {
-      path: '/pokemon/?offset=0&limit=150',
+      path: '/typesearch',
       name: 'Typesearch',
       component:TypeSearch
     },
-    {
-      path: '/',
-      name: 'Searchbuttons',
-      component:SearchButtons
-    }    
+    // {
+      // path: '/',
+      // name: 'Searchbuttons',
+      // component:SearchButtons
+    // }    
 
   ]
 })

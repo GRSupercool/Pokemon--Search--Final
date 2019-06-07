@@ -2,11 +2,12 @@
   <div class="NameSearch">
     <h2>Search for Pokemon By Name</h2>
     <p>
-      <router-link to="/typesearch">Search for Pokemon by Type</router-link>
+      <router-link to="/typeSearch">View Complete National Pokedex</router-link>
     </p>
+
     <form v-on:submit.prevent="getPokemon">
       <p>
-        Find Pokemon 
+        Enter Pokemon Name
         <input type="text" v-model="pokemonName" placeholder="Meowth"> 
         <button type="submit">Search</button>
       </p>
@@ -47,7 +48,6 @@ export default {
     return {
       results: null,
       errors: [],
-      phrase: "",
       name: ""
 
     };
@@ -62,6 +62,7 @@ export default {
           this.results = response.data;
           console.log(this.results.name);
           console.log(this.results.sprites.front_default);
+          console.log(this.results.data)
         })
         .catch(error => {
           this.errors.push(error);
@@ -98,9 +99,13 @@ button {
   cursor: pointer;
   font-size: 1.4rem;
 }
-h1,
+h1{
+  font-family:fantasy;
+  font-size:100px;
+}
 h2 {
   font-weight: normal;
+  
 }
 
 ul.results {
@@ -113,8 +118,8 @@ ul.results {
   margin: 10px;
   border: solid 1px #333;
   padding: 0.5rem;
-  width: 200px;
-  min-height: 100px;
+  width: 100px;
+  min-height: 10px;
   color: #fff;
   background: rgba(0, 0, 0, 0.7);
 }
@@ -129,6 +134,12 @@ ul.errors {
 }
 
 a {
-  color: #42b983;
+  color: red;
+}
+
+.results{
+  min-height:200px;
+  min-width:200px;
+  
 }
 </style>

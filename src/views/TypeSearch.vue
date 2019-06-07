@@ -1,30 +1,102 @@
 <template>
-  <div class="typesearch">
-    <h2>Select Pokemon by Type</h2>
-    <form v-on:submit.prevent="findWords">
-      <p>
-        Find a Pokemon By Type
-        <input type="text" v-model="name">
-        <button type="submit">Search</button>
-      </p>
-    </form>
-    <ul class="results" v-if="results && results.length > 0">
-      <li class="item" v-for="(item,index) of results" :key="index">
+  <div class="TypeSearch">
+    <h2>Search for Pokemon By Type</h2>
+    <p>
+      <router-link to="/typeSearch">Search for Pokemon by Type</router-link>
+    </p>
+<form
+  id="app"
+  @submit="checkForm"
+  action="https://pokemondb.net/pokedex/national"
+  method="post"
+>
+
+  <p v-if="errors.length">
+    <b>Please correct the following error(s):</b>
+    <ul>
+      <li v-for="error in errors">{{ error }}</li>
+    </ul>
+  </p>
+
+  <p>
+    <label for="name">Name</label>
+    <input
+      id="name"
+      v-model="name"
+      type="text"
+      name="name"
+    >
+  </p>
+
+  <p>
+    <label for="age">age</label>
+    <input
+      id="age"
+      v-model="age"
+      type="number"
+      name="age"
+      min="0"
+    >
+  </p>
+
+  <p>
+    <label for="pokemon">Favorite Pokemon</label>
+    <select
+      id="pokemon"
+      v-model="pokemon"
+      name="pokemon"
+    >
+      <option>Bulbasaur</option>
+      <option>Charizard</option>
+      <option>Pikachu</option>
+      <option>Meowth</option>
+      <option>Catipillar</option>
+      <option>JigglyPuff</option>
+      <option>IvySaur</option>
+      <option>Venasaur</option>  
+      <option>Metapod</option>
+      <option>Butterfree</option>
+      <option>Blastoise</option>
+      <option>Charmander</option>
+      <option>Weedle</option>
+      <option>Squirtle</option>
+      <option>Wartortle</option>
+      <option>Beedrill</option>
+    </select>
+  </p>
+
+  <p>
+    <input
+      type="submit"
+      value="Submit"
+    >
+  </p>
+
+</form>
+    <ul class="results" v-if="results && Object.keys(results).length > 0">
+      <li class="item">
+        <p>
+          <strong>{{this.results.type}}</strong>
+        </p>
+        <img :src="`${this.results.sprites.front_default}`" />
+      </li>
+      <!-- <li class="item" v-for="(item,index) of results" :key="index">
         <p>
           <strong>{{item.name}}</strong>
         </p>
-        <p>{{item.score}}</p>
-      </li>
+        <img :src="`${item.sprites.front_default}`" />
+      </li> -->
     </ul>
 
-    <div class="no-results" v-else-if="results && results.length === 0">
-      <h2>No Pokemon Found</h2>
-      <p>Please adjust your search to find a Pokemon.</p>
+
+    <div class="no-results" v-else-if="results && Object.keys(results).length === 0">
+      <h2>Enter valid Pokemon Type</h2>
     </div>
 
     <ul class="errors" v-if="errors && errors.length > 0">
-      <li v-for="(error, index) of errors" :key="index">{{error.message}}</li>
+      <li v-for="(errors, index) of errors" :key="index">Pokemon not found</li>
     </ul>
+
   </div>
 </template>
 
@@ -32,37 +104,37 @@
 import axios from "axios";
 
 export default {
-  name: "TypeSearch",
+  name: "Typesearch",
   data() {
     return {
       results: null,
       errors: [],
-      noun: ""
+      type: ""
+
     };
   },
 
   methods: {
-    findWords: function() {
+    getPokemon: function() {
       axios
-        .get("https://pokeapi.co/", {
-          params: {
-            rel_jjb: this.noun
-          }
+        .get(`https://pokeapi.co/api/v2/pokemon/`,{
         })
         .then(response => {
           this.results = response.data;
+          console.log(this.results.type);
+          console.log(this.results.sprites.front_default);
         })
         .catch(error => {
           this.errors.push(error);
         });
     }
   }
-};
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.TypeSearch {
+.Namesearch {
   font-size: 1.4rem;
 }
 

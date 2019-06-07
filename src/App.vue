@@ -37,6 +37,7 @@ export default {
     background-size: auto 87vh;
     filter:drop-shadow(-6px, 40px, 23px, rgba(black, 0.5));
     max-width:50%;
+    background-image:relative;
   }
   .aside{
   padding: 1em;

@@ -134,6 +134,7 @@ input[type="text"] {
   font-weight: 300;
   background: rgba(0, 0, 0, 0.02);
   padding: 0.5rem;
+  margin:0,auto;
 }
 button {
   background: #333;

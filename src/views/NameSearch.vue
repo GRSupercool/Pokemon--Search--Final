@@ -56,7 +56,7 @@ export default {
   methods: {
     getPokemon: function() {
       axios
-        .get(`https://pokeapi.co/api/v2/pokemon/${this.pokemonName}`,{
+        .get(`https://pokeapi.co/api/v2/pokemon/${this.pokemonName.toLowerCase()}`,{
         })
         .then(response => {
           this.results = response.data;

@@ -62,6 +62,7 @@
       <option>Squirtle</option>
       <option>Wartortle</option>
       <option>Beedrill</option>
+      <option>ViewAll</option>
     </select>
   </p>
 

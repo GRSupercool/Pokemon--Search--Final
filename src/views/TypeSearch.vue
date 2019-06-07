@@ -1,8 +1,8 @@
 <template>
   <div class="TypeSearch">
-    <h2>Search for Pokemon By Type</h2>
+    <h2>View Pokemon in National Pokedex</h2>
     <p>
-      <router-link to="/typeSearch">Search for Pokemon by Type</router-link>
+      <router-link to="/typeSearch">Sign Up to View National Pokedex</router-link>
     </p>
 <form
   id="app"

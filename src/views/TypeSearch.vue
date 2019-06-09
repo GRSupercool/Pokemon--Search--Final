@@ -109,6 +109,7 @@ export default {
           console.log(this.results.type);
           console.log(this.results.sprites.front_default);
         })
+       
         .catch(error => {
           this.errors.push(error);
         });
@@ -119,7 +120,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.Namesearch {
+.TypeSearch {
   font-size: 1.4rem;
 }
 
@@ -176,6 +177,12 @@ ul.errors {
 }
 
 a {
-  color: #42b983;
+  color: #fd0f0f;
+}
+.id {
+  max-width:100%;
+  max-height:100%;
+  margin:0, auto;
+  
 }
 </style>

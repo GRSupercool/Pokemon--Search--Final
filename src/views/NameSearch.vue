@@ -35,8 +35,8 @@
     <ul class="errors" v-if="errors && errors.length > 0">
       <li v-for="(errors, index) of errors" :key="index">Pokemon not found</li>
     </ul>
-
   </div>
+  
 </template>
 
 <script>
@@ -49,7 +49,7 @@ export default {
       results: null,
       errors: [],
       name: ""
-
+      
     };
   },
 
@@ -64,6 +64,7 @@ export default {
           console.log(this.results.sprites.front_default);
           console.log(this.results.type)
         })
+        
         .catch(error => {
           this.errors.push(error);
         });
@@ -137,9 +138,7 @@ a {
   color: red;
 }
 
-.results{
-  min-height:200px;
-  min-width:200px;
+
   
-}
+
 </style>
